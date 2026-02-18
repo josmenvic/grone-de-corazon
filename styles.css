@@ -207,11 +207,8 @@ select{
 .card__actions .btn{width:100%}
 
 .modal{
-  border:none;
-  padding:0;
-  width:min(940px, 96vw);
-  border-radius:18px;
-  box-shadow: var(--shadow);
+  max-height: 90vh;
+  overflow: auto;
 }
 .modal::backdrop{background:rgba(0,0,0,.45)}
 .modal__card{padding:16px}
