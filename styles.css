@@ -261,26 +261,55 @@ select{
   font-size:12px;
 }
 
+/* ===== Responsive Fix (pegar al final, reemplaza tus @media actuales) ===== */
+
+@media (max-width: 1200px){
+  .grid{grid-template-columns: repeat(3, 1fr)}
+}
+
 @media (max-width: 980px){
-  .grid{grid-template-columns: repeat(2, 1fr)}
+  /* Header se apila bien */
+  .header__inner{
+    flex-wrap:wrap;
+    align-items:flex-start;
+  }
+
+  .brand{order:1}
+  .actions{order:2; width:100%; justify-content:space-between}
+  .nav{order:3; width:100%}
+
+  /* Buscador ocupa bien y no rompe */
+  .search{flex:1}
+  .search input{
+    width:100%;
+    min-width: 0;
+  }
+
+  /* Categorías: que hagan scroll horizontal si no entran */
+  .nav__links{
+    justify-content:flex-start;
+    flex-wrap:nowrap;
+    overflow-x:auto;
+    -webkit-overflow-scrolling:touch;
+    padding:6px 0;
+    gap:8px;
+  }
+  .nav__links::-webkit-scrollbar{display:none}
+  .chip{flex:0 0 auto}
+
+  /* Hero y modal se acomodan */
   .hero__inner{grid-template-columns:1fr}
   .modal__body{grid-template-columns:1fr}
-  .search input{width:min(260px, 52vw)}
-  .nav__links{justify-content:flex-start}
+
+  /* Grid más cómodo */
+  .grid{grid-template-columns: repeat(2, 1fr)}
 }
 
 @media (max-width: 520px){
   .grid{grid-template-columns: 1fr}
-  .nav__toggle{
-    display:inline-flex;
-    border:1px solid var(--line);
-    background:white;
-    padding:10px 12px;
-    border-radius:999px;
-    font-weight:900;
-    text-transform:uppercase;
-    font-size:12px;
-  }
-  .nav__links{display:none}
-  .nav__links.is-open{display:flex}
+
+  /* Botones y topbar mejor en móvil */
+  .topbar__inner{justify-content:center}
+
+  .controls__inner{justify-content:center}
 }
