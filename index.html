@@ -1,0 +1,203 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Grone de corazón | Polos personalizados</title>
+  <meta name="description" content="Catálogo de polos personalizados. Compra por WhatsApp en Lima." />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+  <!-- Top bar tipo ecommerce -->
+  <div class="topbar">
+    <div class="container topbar__inner">
+      <span>📍 Lima</span>
+      <span>Atención: Lun–Dom 9:00–20:00</span>
+      <a class="topbar__link" target="_blank" rel="noreferrer"
+         href="https://wa.me/51987654321?text=Hola%2C%20quiero%20cotizar%20polos%20personalizados.">
+        Comprar por WhatsApp
+      </a>
+    </div>
+  </div>
+
+  <!-- Header tipo adidas (categorías + buscador + iconos) -->
+  <header class="header">
+    <div class="container header__inner">
+      <a class="brand" href="#inicio">GRONE DE CORAZÓN</a>
+
+      <nav class="nav" aria-label="Categorías">
+        <button class="nav__toggle" id="navToggle" aria-expanded="false">Menú</button>
+        <div class="nav__links" id="navLinks">
+          <button class="chip is-active" data-cat="Todos">Todos</button>
+          <button class="chip" data-cat="Hincha">Hincha</button>
+          <button class="chip" data-cat="Personalizados">Personalizados</button>
+          <button class="chip" data-cat="Empresa">Empresa</button>
+          <button class="chip" data-cat="Mayorista">Mayorista</button>
+          <button class="chip" data-cat="Ofertas">Ofertas</button>
+        </div>
+      </nav>
+
+      <div class="actions">
+        <div class="search">
+          <input id="q" type="search" placeholder="Buscar polos..." aria-label="Buscar" />
+        </div>
+        <button class="iconBtn" id="openHelp" title="Cómo comprar" aria-label="Cómo comprar">
+          ?
+        </button>
+        <a class="iconBtn" title="WhatsApp" aria-label="WhatsApp"
+           target="_blank" rel="noreferrer"
+           href="https://wa.me/51987654321?text=Hola%2C%20quiero%20cotizar%20polos%20personalizados.">
+          WA
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <main id="inicio">
+    <!-- Hero -->
+    <section class="hero">
+      <div class="container hero__inner">
+        <div>
+          <p class="kicker">POLOS PERSONALIZADOS</p>
+          <h1>Diseños a tu estilo. Compra por WhatsApp.</h1>
+          <p class="sub">
+            Elige un modelo del catálogo, selecciona talla y color, y te abre WhatsApp con el mensaje listo.
+          </p>
+          <div class="hero__cta">
+            <a class="btn" href="#catalogo">Ver catálogo</a>
+            <a class="btn btn--ghost" target="_blank" rel="noreferrer"
+               href="https://wa.me/51987654321?text=Hola%2C%20quiero%20cotizar%20polos%20personalizados.%20%C2%BFQu%C3%A9%20modelos%20tienes%3F">
+              Pedir modelos
+            </a>
+          </div>
+        </div>
+
+        <div class="heroCard">
+          <div class="heroCard__row">
+            <span class="muted">Entrega</span><span>Lima (coordinado)</span>
+          </div>
+          <div class="heroCard__row">
+            <span class="muted">Horario</span><span>Lun–Dom 9:00–20:00</span>
+          </div>
+          <div class="heroCard__row">
+            <span class="muted">WhatsApp</span><span>987 654 321</span>
+          </div>
+          <a class="btn btn--full" target="_blank" rel="noreferrer"
+             href="https://wa.me/51987654321?text=Hola%2C%20quiero%20cotizar%20polos%20personalizados.%20%C2%BFMe%20ayudas%20con%20tallas%20y%20precio%3F">
+            Cotizar ahora
+          </a>
+          <p class="tiny muted">Tip: luego puedes reemplazar “Sin foto” por imágenes reales.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Controles tipo “filtrar/ordenar” -->
+    <section class="controls">
+      <div class="container controls__inner">
+        <div class="left">
+          <strong id="count">0</strong><span class="muted">modelos</span>
+        </div>
+
+        <div class="right">
+          <label class="select">
+            <span class="muted">Ordenar</span>
+            <select id="sort">
+              <option value="reco">Recomendados</option>
+              <option value="price_asc">Precio: menor a mayor</option>
+              <option value="price_desc">Precio: mayor a menor</option>
+              <option value="new">Nuevos</option>
+            </select>
+          </label>
+
+          <button class="btn btn--ghost" id="clear">Limpiar filtros</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Catálogo -->
+    <section id="catalogo" class="catalogo">
+      <div class="container">
+        <div id="grid" class="grid" aria-live="polite"></div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Modal detalle -->
+  <dialog id="modal" class="modal">
+    <form method="dialog" class="modal__card">
+      <div class="modal__top">
+        <div>
+          <p class="kicker" id="mCat">CATEGORÍA</p>
+          <h2 id="mTitle">Modelo</h2>
+          <p class="muted" id="mDesc">Descripción</p>
+        </div>
+        <button class="iconBtn" value="cancel" aria-label="Cerrar">✕</button>
+      </div>
+
+      <div class="modal__body">
+        <div class="preview" id="mImg">SIN FOTO</div>
+
+        <div class="opts">
+          <div class="priceRow">
+            <span class="price" id="mPrice">S/ 0</span>
+            <span class="badge" id="mBadge">NUEVO</span>
+          </div>
+
+          <label class="field">
+            <span class="muted">Talla</span>
+            <select id="mSize">
+              <option>S</option><option>M</option><option>L</option><option>XL</option>
+            </select>
+          </label>
+
+          <label class="field">
+            <span class="muted">Color</span>
+            <select id="mColor"></select>
+          </label>
+
+          <label class="field">
+            <span class="muted">Detalle (nombre, número, frase)</span>
+            <input id="mCustom" placeholder="Ej: 'LUIS 10' / 'GRONE DE CORAZÓN'" />
+          </label>
+
+          <button class="btn btn--full" id="mWhatsApp" type="button">
+            Pedir por WhatsApp
+          </button>
+
+          <p class="tiny muted">
+            Se abrirá WhatsApp con el mensaje listo (sin carrito, sin pagos online).
+          </p>
+        </div>
+      </div>
+    </form>
+  </dialog>
+
+  <!-- Modal ayuda -->
+  <dialog id="help" class="modal">
+    <form method="dialog" class="modal__card">
+      <div class="modal__top">
+        <div>
+          <p class="kicker">CÓMO COMPRAR</p>
+          <h2>Compra por WhatsApp</h2>
+          <p class="muted">Elige un modelo, talla y color. Luego envía el pedido.</p>
+        </div>
+        <button class="iconBtn" value="cancel" aria-label="Cerrar">✕</button>
+      </div>
+      <div class="helpList">
+        <div class="helpItem"><strong>1)</strong> Entra a un modelo</div>
+        <div class="helpItem"><strong>2)</strong> Elige talla y color</div>
+        <div class="helpItem"><strong>3)</strong> Click “Pedir por WhatsApp”</div>
+      </div>
+    </form>
+  </dialog>
+
+  <!-- WhatsApp flotante -->
+  <a class="waFloat" target="_blank" rel="noreferrer"
+     href="https://wa.me/51987654321?text=Hola%2C%20quiero%20cotizar%20polos%20personalizados.">
+    WhatsApp
+  </a>
+
+  <script src="script.js"></script>
+</body>
+</html>
